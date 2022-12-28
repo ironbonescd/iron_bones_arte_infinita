@@ -6,7 +6,7 @@
         font-family: Arial, sans-serif;
         text-align: center;
       }
-      #poema {
+      #arte {
         display: inline-block;
         width: 90%;
         margin: 0 auto;
@@ -15,19 +15,29 @@
         padding: 20px;
         font-size: larger;
       }
+      #img {
+        color: red;
+      }
     </style>
   </head>
   <body>
     <h1>Poema generado por Inteligencia Artificial/GPT-3 para #LaFeriaDeCaliEsConVos :P 💃🕺🏿</h1>
-    <div id="poema">
-      <image src="Loading_icon.gif">
+    <div id="arte">
+      <div id="img">
+        <image src="Loading_icon.gif"/>
+      </div>
+      <div id="poema">
+      </div>
     </div>
     <footer>
       Con el apoyo de <a href="https://www.instagram.com/iron_bones_cd/">Iron Bones</a>
     </footer>
     <script>
+
+      //const server = 'https://server-chat-gpt-olm8.onrender.com/';
+      const server = "http://localhost:5000";
       async function generarPoema() {
-           const response = await fetch('https://server-chat-gpt-olm8.onrender.com/', {
+           const response = await fetch(server, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -45,6 +55,7 @@
               parsedData = parsedData.replace(/(?:\r\n|\r|\n)/g, '<br />');
               console.log(parsedData);
               document.getElementById('poema').innerHTML = parsedData;
+              generarImg(parsedData);
           } else {
               const err = await response.text()
 
@@ -53,6 +64,30 @@
           }
         
       }
+
+      async function generarImg(prompt) {
+           const response = await fetch(`${server}/img`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  prompt: prompt
+              })
+          })
+          if (response.ok) {
+              const data = await response.json();
+              console.log(data);
+              document.getElementById('img').innerHTML = `<image src="${data.url}"/> <br/><br/>`;
+          } else {
+              const err = await response.text()
+
+              document.getElementById('img').innerHTML = "";
+              alert("Something went wrong with the image");
+          }
+
+      }
+
       generarPoema();
     </script>
   </body>
