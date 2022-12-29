@@ -37,8 +37,8 @@ jobs:
           echo -e "const TOKEN = '$(echo -n $KEY | sha256sum)';" > ./js/config.js
       - uses: KevinRohn/github-action-javascript-obfuscator@v1
         with:
-          input_path: ./js/
-          output_path: ./js/
+          input_path: ./js/config.js
+          output_path: ./js/config.js
           compact: true
           control_flow_flattening: false
           dead_code_injection: false
