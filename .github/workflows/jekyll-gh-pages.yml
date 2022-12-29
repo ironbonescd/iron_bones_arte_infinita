@@ -34,7 +34,7 @@ jobs:
         env:
           KEY: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo -e "const TOKEN = '$(echo $KEY | sha256sum)';" > ./config.js
+          echo -e "const TOKEN = '$(echo $KEY | sha256sum)';" > ./js/config.js
 #      - uses: KevinRohn/github-action-javascript-obfuscator@v1
 #        with:
 #          input_path: ./js/
