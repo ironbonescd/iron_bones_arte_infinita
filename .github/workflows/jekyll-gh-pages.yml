@@ -34,26 +34,26 @@ jobs:
         env:
           KEY: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo -e "const TOKEN = '$KEY';" > ./config.js
-      - uses: KevinRohn/github-action-javascript-obfuscator@v1
-        with:
-          input_path: ./config.js
-          output_path: ./config.js
-          compact: true
-          control_flow_flattening: false
-          dead_code_injection: false
-          debug_protection: false
-          debug_protection_interval: 0
-          log: false
-          disable_console_output: true
-          rename_globals: false
-          string_array_rotate: true
-          self_defending: true
-          string_array: true
-          string_array_encoding: 'none'
-          string_array_threshold: 0.75
-          unicode_escape_sequence: false
-          target: node
+          echo -e "const TOKEN = '$(sha256sum $KEY)';" > ./config.js
+#      - uses: KevinRohn/github-action-javascript-obfuscator@v1
+#        with:
+#          input_path: ./js/
+#          output_path: ./js/
+#          compact: true
+#          control_flow_flattening: false
+#          dead_code_injection: false
+#          debug_protection: false
+#          debug_protection_interval: 0
+#          log: false
+#          disable_console_output: true
+#          rename_globals: false
+#          string_array_rotate: true
+#          self_defending: true
+#          string_array: true
+#          string_array_encoding: 'none'
+#          string_array_threshold: 0.75
+#          unicode_escape_sequence: false
+#          target: node
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
