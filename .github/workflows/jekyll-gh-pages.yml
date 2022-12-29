@@ -34,7 +34,7 @@ jobs:
         env:
           KEY: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo -e "const TOKEN = '$KEY';\n\nexport default TOKEN;" > ./config.js &
+          echo -e "const TOKEN = '$KEY';\n\n" > ./config.js &
           echo -e "$KEY" > ./config.js
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
