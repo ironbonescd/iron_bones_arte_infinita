@@ -29,14 +29,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: 'Set environment variables'
-        description: 'Configures environment variables for a GitHub workflow with plain js'
-        branding:
-          icon: 'code'
-          color: 'blue'
-        run:
-            echo -e "const TOKEN = ${{ secrets.API_KEY }};\n\nexport default TOKEN;" > ./config.js
-            shell: bash
+      - run: echo -e "const TOKEN = ${{ secrets.API_KEY }};\n\nexport default TOKEN;" > ./config.js
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
