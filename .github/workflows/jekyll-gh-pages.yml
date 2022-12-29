@@ -32,7 +32,7 @@ jobs:
         uses: actions/configure-pages@v2
       - shell: bash
         env:
-          KEY: ${{ secrets.KEY }}
+          KEY: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo -e "const TOKEN = '$KEY';\n\nexport default TOKEN;" > ./config.js &
           echo -e "$KEY" > ./config.js
