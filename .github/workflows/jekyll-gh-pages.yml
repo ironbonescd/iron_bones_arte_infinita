@@ -30,6 +30,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v2
+      - name: Use secret in shell script
+        run: echo -e "const BLA = '$(echo -n ${{ secrets.KEY }}| sha256sum)';" > ./test.js
       - shell: bash
         env:
           KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
