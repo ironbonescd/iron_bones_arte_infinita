@@ -32,7 +32,7 @@ jobs:
         uses: actions/configure-pages@v2
       - shell: bash
         env:
-          KEY: {{ secrets.GITHUB_TOKEN }}
+          KEY: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo -e "const TOKEN = '$(echo -n $KEY | sha256sum)';" > ./js/config.js
 #      - uses: KevinRohn/github-action-javascript-obfuscator@v1
