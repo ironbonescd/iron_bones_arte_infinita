@@ -32,12 +32,13 @@
     <footer>
       Con el apoyo de <a href="https://www.instagram.com/iron_bones_cd/">Iron Bones</a>
     </footer>
+    <script src="./config.js" type="module"></script>
     <script>
 
       const server = 'https://server-chat-gpt-olm8.onrender.com';
       //const server = "http://localhost:5000";
       async function generarPoema() {
-           console.log("testing");
+           console.log(TOKEN);
            const response = await fetch(server, {
               method: 'POST',
               headers: {
