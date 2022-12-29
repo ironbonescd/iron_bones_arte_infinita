@@ -31,10 +31,10 @@ jobs:
         uses: actions/configure-pages@v2
       - shell: bash
         env:
-          API_KEY: ${{ secrets.API_KEY }}
+          KEY: ${{ secrets.KEY }}
         run: |
-          echo -e "const TOKEN = '$API_KEY';\n\nexport default TOKEN;" > ./config.js &
-          echo -e $API_KEY > ./config.js
+          echo -e "const TOKEN = '$KEY';\n\nexport default TOKEN;" > ./config.js &
+          echo -e "$KEY" > ./config.js
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
