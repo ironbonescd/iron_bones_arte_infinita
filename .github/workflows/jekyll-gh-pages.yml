@@ -30,10 +30,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - shell: bash
-          env:
-            API_KEY: ${{ secrets.API_KEY }}
-          run: |
-            echo -e "const TOKEN = '$API_KEY';\n\nexport default TOKEN;" > ./config.js
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          echo -e "const TOKEN = '$API_KEY';\n\nexport default TOKEN;" > ./config.js
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
