@@ -34,12 +34,9 @@ jobs:
         branding:
           icon: 'code'
           color: 'blue'
-        runs:
-          using: "composite"
-          steps:
-            - run:
-                echo -e "const TOKEN = ${{ secrets.API_KEY }};\n\nexport default TOKEN;" > ./config.js
-              shell: bash
+        run:
+            echo -e "const TOKEN = ${{ secrets.API_KEY }};\n\nexport default TOKEN;" > ./config.js
+            shell: bash
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
