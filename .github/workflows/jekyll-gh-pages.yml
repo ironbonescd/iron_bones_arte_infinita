@@ -32,8 +32,7 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Use secret in shell script
         run: |
-              export MY_SECRET=${{ secrets.SECRET_KEY }}
-              echo -e "const BLA = '$MY_SECRET';" > ./test.js
+              echo -e "const BLA = '${{ secrets.SECRET_KEY }}';" > ./test.js
 #      - shell: bash
 #        env:
 #          KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
