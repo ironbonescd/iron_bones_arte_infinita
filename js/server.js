@@ -1,5 +1,9 @@
-const server = 'https://server-chat-gpt-olm8.onrender.com';
-//const server = "http://localhost:5000";
+const server = SERVER;
+
+function func_img_prompt(prompt){
+    return `${IMG_PROMPT} ${prompt}`;
+}
+
 async function generarPoema() {
    const response = await fetch(server, {
       method: 'POST',
@@ -8,7 +12,7 @@ async function generarPoema() {
       },
       body: JSON.stringify({
           token: TOKEN,
-          prompt: 'Escribeme un poema en el estilo de la cancion cali pachanguero pero solo pon el poema no escribas "Aqui esta el poema" o "Aqui va el poema'
+          prompt: TEXT_PROMPT
       })
   })
 
@@ -38,7 +42,7 @@ async function generarImg(prompt) {
       },
       body: JSON.stringify({
           token: TOKEN,
-          prompt: prompt
+          prompt: func_img_prompt(prompt)
       })
   })
   if (response.ok) {

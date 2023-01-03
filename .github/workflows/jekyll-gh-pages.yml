@@ -33,6 +33,9 @@ jobs:
       - name: Use secret in shell script
         run: |
               echo -e "const TOKEN = '${{ secrets.SECRET_KEY }}';" > ./js/config.js
+              echo -e "\n const SERVER = '${{ secrets.SERVER }}';" >> ./js/config.js
+              echo -e "\n const TEXT_PROMPT = '${{ secrets.TEXT_PROMPT }}';" >> ./js/config.js
+              echo -e "\n const IMG_PROMPT = '${{ secrets.IMG_PROMPT }}';" >> ./js/config.js
       - shell: bash
         env:
           KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
@@ -43,25 +46,25 @@ jobs:
 #          KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
 #        run: |
 #          echo -e "const TOKEN = '$(echo -n $KEY | sha256sum)';" > ./js/config.js
-      - uses: KevinRohn/github-action-javascript-obfuscator@v1
-        with:
-          input_path: ./js/
-          output_path: ./js/
-          compact: true
-          control_flow_flattening: false
-          dead_code_injection: false
-          debug_protection: false
-          debug_protection_interval: 0
-          log: false
-          disable_console_output: true
-          rename_globals: false
-          string_array_rotate: true
-          self_defending: true
-          string_array: true
-          string_array_encoding: 'none'
-          string_array_threshold: 0.75
-          unicode_escape_sequence: false
-          target: node
+#      - uses: KevinRohn/github-action-javascript-obfuscator@v1
+#        with:
+#          input_path: ./js/
+#          output_path: ./js/
+#          compact: true
+#          control_flow_flattening: false
+#          dead_code_injection: false
+#          debug_protection: false
+#          debug_protection_interval: 0
+#          log: false
+#          disable_console_output: true
+#          rename_globals: false
+#          string_array_rotate: true
+#          self_defending: true
+#          string_array: true
+#          string_array_encoding: 'none'
+#          string_array_threshold: 0.75
+#          unicode_escape_sequence: false
+#          target: node
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
