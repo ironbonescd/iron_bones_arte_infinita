@@ -1,5 +1,5 @@
 # iron_bones_arte_infinita
-- Ya es funcional: https://investingia.github.io/iron_bones_arte_infinita/
+- Ya es funcional: https://ironbonescd.github.io/iron_bones_arte_infinita/
 
 # Documentacion
 - No queria poner los prompts como variable de entorno porque complicaba el
