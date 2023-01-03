@@ -32,20 +32,20 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Use secret in shell script
         run: |
-              echo -e "const TOKEN = '${{ secrets.SECRET_KEY }}';" > ./js/config.js
-              echo -e "\n const SERVER = '${{ secrets.SERVER }}';" >> ./js/config.js
-              echo -e "\n const TEXT_PROMPT = '${{ secrets.TEXT_PROMPT }}';" >> ./js/config.js
-              echo -e "\n const IMG_PROMPT = '${{ secrets.IMG_PROMPT }}';" >> ./js/config.js
+              echo -e "const TOKEN = `${{ secrets.SECRET_KEY }}`;" > ./js/config.js
+              echo -e "const SERVER = `${{ secrets.SERVER }}`;" >> ./js/config.js
+              echo -e "const TEXT_PROMPT = `${{ secrets.TEXT_PROMPT }}`;" >> ./js/config.js
+              echo -e "const IMG_PROMPT = `${{ secrets.IMG_PROMPT }}`;" >> ./js/config.js
       - shell: bash
         env:
           KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
         run: |
-          echo -e "const BLA = '$(echo -n $KEY | sha256sum)';" > ./test.js
+          echo -e "const BLA = `$(echo -n $KEY | sha256sum)`;" > ./test.js
 #      - shell: bash
 #        env:
 #          KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
 #        run: |
-#          echo -e "const TOKEN = '$(echo -n $KEY | sha256sum)';" > ./js/config.js
+#          echo -e "const TOKEN = `$(echo -n $KEY | sha256sum)`;" > ./js/config.js
 #      - uses: KevinRohn/github-action-javascript-obfuscator@v1
 #        with:
 #          input_path: ./js/
