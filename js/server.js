@@ -22,11 +22,12 @@ async function generarPoema() {
       parsedData = parsedData.substring(1);
       parsedData = parsedData.trim();
       parsedData = parsedData.replace(/(?:\r\n|\r|\n)/g, '<br />');
-      console.log(parsedData);
       document.getElementById('poema').innerHTML = parsedData;
+      parsedData = parsedData.replace(/<\/?[^>]+(>|$)/g, " ");
+      console.log(parsedData);
       generarImg(parsedData);
   } else {
-      const err = await response.text()
+      const err = await response.text();
 
       document.getElementById('poema').innerHTML = "Something went wrong";
       alert(err)
@@ -35,6 +36,8 @@ async function generarPoema() {
 }
 
 async function generarImg(prompt) {
+   const prompt_img = func_img_prompt(prompt);
+   console.log(prompt_img);
    const response = await fetch(`${server}/img`, {
       method: 'POST',
       headers: {
@@ -42,7 +45,7 @@ async function generarImg(prompt) {
       },
       body: JSON.stringify({
           token: TOKEN,
-          prompt: func_img_prompt(prompt)
+          prompt: String(prompt_img)
       })
   })
   if (response.ok) {
@@ -50,8 +53,8 @@ async function generarImg(prompt) {
       console.log(data);
       document.getElementById('img').innerHTML = `<image src="${data.url}"/> <br/><br/>`;
   } else {
-      const err = await response.text()
-
+      const err = await response.text();
+      console.error(err);
       document.getElementById('img').innerHTML = "";
       alert("Something went wrong with the image");
   }
