@@ -1,5 +1,5 @@
 # poemas_cali_pachanguero_gpt3
-- Ya es funcional: https://civilian.github.io/poemas_cali_pachanguero_gpt3/
+- Ya es funcional: https://investingia.github.io/iron_bones_arte_infinita/
 
 # Documentacion
 - No queria poner los prompts como variable de entorno porque complicaba el
