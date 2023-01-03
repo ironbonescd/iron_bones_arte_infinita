@@ -33,14 +33,15 @@ jobs:
       - name: Use secret in shell script
         run: |
               echo -e "const TOKEN = \`${{ secrets.SECRET_KEY }}\`;" > ./js/config.js
+              echo -e "const TITLE = \`${{ secrets.TITLE }}\`;" >> ./js/config.js
               echo -e "const SERVER = \`${{ secrets.SERVER }}\`;" >> ./js/config.js
               echo -e "const TEXT_PROMPT = \`${{ secrets.TEXT_PROMPT }}\`;" >> ./js/config.js
               echo -e "const IMG_PROMPT = \`${{ secrets.IMG_PROMPT }}\`;" >> ./js/config.js
-      - shell: bash
-        env:
-          KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
-        run: |
-          echo -e "const BLA = \`$(echo -n $KEY | sha256sum)\`;" > ./test.js
+#      - shell: bash
+#        env:
+#          KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5
+#        run: |
+#          echo -e "const BLA = \`$(echo -n $KEY | sha256sum)\`;" > ./test.js
 #      - shell: bash
 #        env:
 #          KEY: H8s6yD6RoGeSNFG5NEHoAP4zJLFTnyMLtDLvrGKYzmDP6DFUf9di5neDp3teKfGzQYv4GwUuR69dDQKYnpQfdE3bfEhawUBQdQwnuyz8sNiG52ee6L2F7VJva6jHLmu5

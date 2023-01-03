@@ -5,6 +5,7 @@ function func_img_prompt(prompt){
 }
 
 async function generarPoema() {
+   document.getElementById('title').innerHTML = TITLE;
    const response = await fetch(server, {
       method: 'POST',
       headers: {
@@ -30,7 +31,7 @@ async function generarPoema() {
       const err = await response.text();
 
       document.getElementById('poema').innerHTML = "Something went wrong";
-      alert(err)
+      alert(err);
   }
 
 }
